@@ -71,10 +71,6 @@ export function AboutSection() {
                 <div className="pp-stat-lbl">Case studies</div>
               </li>
               <li className="pp-stat">
-                <div className="pp-stat-num">8w</div>
-                <div className="pp-stat-lbl">Study</div>
-              </li>
-              <li className="pp-stat">
                 <div className="pp-stat-num">5+</div>
                 <div className="pp-stat-lbl">Products</div>
               </li>

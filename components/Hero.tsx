@@ -14,7 +14,6 @@ const MINI_STATS = [
     label: "Case studies",
     sub: "End-to-end analyses",
   },
-  { num: "8w", label: "Intensive learning", sub: "Structured roadmap" },
   {
     num: "4",
     label: "Products studied",
@@ -94,12 +93,12 @@ export function Hero({ onOpenCase }: HeroProps) {
             <dd className="hero-stat-num">12</dd>
           </div>
           <div>
-            <dt className="hero-stat-lbl">Structured study</dt>
-            <dd className="hero-stat-num">8w</dd>
-          </div>
-          <div>
             <dt className="hero-stat-lbl">Products analysed</dt>
             <dd className="hero-stat-num">5+</dd>
+          </div>
+          <div>
+            <dt className="hero-stat-lbl">Based in</dt>
+            <dd className="hero-stat-num">Mumbai</dd>
           </div>
         </dl>
       </div>

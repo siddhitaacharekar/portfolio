@@ -42,8 +42,8 @@ export function SkillsSection() {
           </h2>
         </div>
         <p className="skills-intro">
-          Applied across real product case studies over 8 weeks of structured
-          learning.
+          Applied across real product case studies spanning research,
+          analytics, and strategy.
         </p>
       </div>
 
