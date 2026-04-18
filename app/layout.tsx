@@ -1,7 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Instrument_Serif, DM_Sans } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 import { siteConfig } from "@/lib/site-config";
-import { ThemeProvider } from "@/components/ThemeProvider";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import "./globals.css";
 
@@ -21,10 +22,7 @@ const dmSans = DM_Sans({
 });
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f8f5ee" },
-    { media: "(prefers-color-scheme: dark)", color: "#141413" },
-  ],
+  themeColor: "#f8f5ee",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
@@ -87,9 +85,7 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
-    ],
+    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
     apple: "/apple-touch-icon.png",
   },
   manifest: "/manifest.webmanifest",
@@ -135,7 +131,6 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${instrumentSerif.variable} ${dmSans.variable}`}
-      suppressHydrationWarning
     >
       <head>
         <script
@@ -148,10 +143,10 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <ThemeProvider>
-          <ScrollProgress />
-          {children}
-        </ThemeProvider>
+        <ScrollProgress />
+        {children}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

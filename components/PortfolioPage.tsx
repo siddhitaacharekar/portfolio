@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { PillNav } from "./PillNav";
-import { SiteHeader } from "./SiteHeader";
 import { Hero } from "./Hero";
 import { Marquee } from "./Marquee";
 import { AboutSection } from "./AboutSection";
@@ -33,7 +32,6 @@ export function PortfolioPage() {
       >
         Skip to content
       </a>
-      <SiteHeader />
       <PillNav />
       <RevealOnScroll />
       <main>
