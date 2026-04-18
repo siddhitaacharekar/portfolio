@@ -9,14 +9,14 @@ export const siteConfig = {
     "Product Manager based in Mumbai focused on product strategy, unit economics, and business model design. 12 end-to-end case studies examining Razorpay, Slice, Jupiter, and CRED — treating each as a business problem first, a product problem second.",
   url: "https://siddhitaacharekar.com",
   ogImage: "/og-image.png",
-  email: "hello@siddhitaacharekar.com",
+  email: "siddhitaacharekar19@gmail.com",
   availability: "Open to opportunities",
   experience: "Flexi Loans · Oct '25 – Present",
   social: {
-    linkedin: "https://linkedin.com/in/siddhita-acharekar",
-    twitter: "https://twitter.com/siddhita_pm",
+    linkedin: "https://www.linkedin.com/in/siddhita-acharekar/",
+    twitter: "https://x.com/Siddhita_19",
     github: "https://github.com/siddhitaacharekar",
-    email: "mailto:hello@siddhitaacharekar.com",
+    email: "mailto:siddhitaacharekar19@gmail.com",
   },
   keywords: [
     "Product Manager",
