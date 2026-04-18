@@ -11,8 +11,8 @@ type HeroProps = {
 const MINI_STATS = [
   {
     num: "12",
-    label: "Portfolio pieces",
-    sub: "End-to-end case studies",
+    label: "Case studies",
+    sub: "End-to-end analyses",
   },
   { num: "8w", label: "Intensive learning", sub: "Structured roadmap" },
   {
@@ -20,7 +20,7 @@ const MINI_STATS = [
     label: "Products studied",
     sub: "Razorpay · Slice · Jupiter · CRED",
   },
-  { num: "3", label: "Top pieces", sub: "Strategy · Data · GTM" },
+  { num: "3", label: "Top case studies", sub: "Strategy · Data · GTM" },
 ];
 
 const HERO_SKILLS = [
@@ -43,11 +43,6 @@ export function Hero({ onOpenCase }: HeroProps) {
       <div className="hero-mesh" aria-hidden="true" />
 
       <div className="hero-left">
-        <p className="hero-eyebrow">
-          <span className="hero-eyebrow-dot" aria-hidden="true" />
-          Product Portfolio · 2026
-        </p>
-
         <p className="hero-greeting">
           Hi, Siddhita here
           <span className="hero-greeting-dot">.</span>
@@ -69,7 +64,7 @@ export function Hero({ onOpenCase }: HeroProps) {
           I turn ambiguous problems into{" "}
           <strong>clear product decisions</strong>. From writing PRDs and
           running A/B tests to breaking down unit economics and designing GTM
-          strategy — I&apos;ve built 12 end-to-end portfolio pieces that show{" "}
+          strategy — I&apos;ve built 12 end-to-end case studies that show{" "}
           <strong>how I think, not just what I know</strong>.
         </p>
 
@@ -95,7 +90,7 @@ export function Hero({ onOpenCase }: HeroProps) {
 
         <dl className="hero-stats">
           <div>
-            <dt className="hero-stat-lbl">Portfolio pieces</dt>
+            <dt className="hero-stat-lbl">Case studies</dt>
             <dd className="hero-stat-num">12</dd>
           </div>
           <div>
@@ -116,7 +111,7 @@ export function Hero({ onOpenCase }: HeroProps) {
           onClick={() => onOpenCase(featured.slug)}
           aria-label={`Open case study: ${featured.title}`}
         >
-          <p className="hero-card-label">Featured piece · {featured.category}</p>
+          <p className="hero-card-label">Featured case study · {featured.category}</p>
           <p className="hero-card-title">&ldquo;{featured.hook}&rdquo;</p>
           <div className="hero-card-meta">
             <span className="hero-card-tag">{featured.title.replace(" Teardown", "")}</span>
@@ -126,7 +121,7 @@ export function Hero({ onOpenCase }: HeroProps) {
           </div>
         </button>
 
-        <ul className="hero-minis" aria-label="Portfolio highlights">
+        <ul className="hero-minis" aria-label="Case study highlights">
           {MINI_STATS.map((stat, idx) => (
             <li
               key={stat.label}

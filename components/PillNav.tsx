@@ -7,7 +7,7 @@ const NAV_IDS = ["about", "work", "all", "skills", "contact"] as const;
 const NAV_LABELS: Record<(typeof NAV_IDS)[number], string> = {
   about: "About",
   work: "Work",
-  all: "All Pieces",
+  all: "All Case Studies",
   skills: "Skills",
   contact: "Contact",
 };

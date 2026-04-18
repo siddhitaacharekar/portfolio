@@ -23,7 +23,7 @@ export function AboutSection() {
               intersection of user needs, execution, and measurable outcomes.
             </p>
             <p>
-              I built 12 portfolio pieces spanning user research, data
+              I built 12 case studies spanning user research, data
               analysis, GTM strategy, unit economics, and technical literacy.
               I&apos;ve examined Razorpay&apos;s MDR concentration risk,
               Slice&apos;s default risk economics, Jupiter&apos;s secondary
@@ -57,8 +57,8 @@ export function AboutSection() {
                 <dd className="pp-v">Razorpay · Slice · Jupiter · CRED</dd>
               </div>
               <div className="pp-row">
-                <dt className="pp-k">Portfolio pieces</dt>
-                <dd className="pp-v">12 end-to-end case studies</dd>
+                <dt className="pp-k">Case studies</dt>
+                <dd className="pp-v">12 end-to-end analyses</dd>
               </div>
               <div className="pp-row">
                 <dt className="pp-k">Status</dt>
@@ -68,7 +68,7 @@ export function AboutSection() {
             <ul className="pp-stats">
               <li className="pp-stat">
                 <div className="pp-stat-num">12</div>
-                <div className="pp-stat-lbl">Pieces</div>
+                <div className="pp-stat-lbl">Case studies</div>
               </li>
               <li className="pp-stat">
                 <div className="pp-stat-num">8w</div>

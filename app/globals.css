@@ -64,6 +64,11 @@ button {
   color: inherit;
 }
 
+ul,
+ol {
+  list-style: none;
+}
+
 :focus-visible {
   outline: 2px solid var(--primary);
   outline-offset: 3px;
@@ -316,41 +321,6 @@ button {
   position: relative;
   z-index: 2;
   border-right: 1px solid var(--border);
-}
-
-.hero-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--primary-d);
-  margin-bottom: 28px;
-  opacity: 0;
-  animation: fadeUp 0.7s var(--ease-out) 0.1s forwards;
-}
-
-.hero-eyebrow-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--primary);
-  box-shadow: 0 0 0 4px oklch(0.7414 0.0738 84.595 / 0.15);
-  animation: pulse 2.4s var(--ease-out) infinite;
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.5;
-    transform: scale(0.7);
-  }
 }
 
 .hero-greeting {
@@ -644,44 +614,80 @@ button {
 .hero-skill-list {
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 20px 24px;
+  border-radius: calc(var(--radius) * 1.25);
+  padding: 22px 26px 24px;
   opacity: 0;
   animation: fadeUp 0.8s var(--ease-out) 0.8s forwards;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-skill-list::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 26px;
+  right: 26px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--primary) 20%,
+    var(--primary) 80%,
+    transparent
+  );
+  opacity: 0.55;
 }
 
 .hero-skill-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   font-size: 10px;
   font-weight: 500;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--fg-muted);
-  margin-bottom: 14px;
+  color: var(--primary-d);
+  margin-bottom: 16px;
+}
+
+.hero-skill-title::before {
+  content: "";
+  width: 14px;
+  height: 1px;
+  background: var(--primary);
+  flex-shrink: 0;
 }
 
 .hero-skill-items {
   display: flex;
   flex-wrap: wrap;
-  gap: 7px;
+  gap: 8px;
 }
 
 .hero-skill {
   font-size: 12px;
   font-weight: 400;
-  color: var(--fg-muted);
-  background: var(--bg-muted);
+  color: var(--fg);
+  background: var(--bg);
   border: 1px solid var(--border);
-  padding: 5px 12px;
+  padding: 6px 13px;
   border-radius: 100px;
-  transition: all 0.2s;
+  transition:
+    color 200ms ease,
+    border-color 220ms var(--ease-out-quart),
+    background 220ms var(--ease-out-quart),
+    transform 280ms var(--ease-out-quart);
   cursor: default;
+  letter-spacing: -0.01em;
 }
 
 @media (hover: hover) and (pointer: fine) {
   .hero-skill:hover {
-    color: var(--fg);
-    border-color: var(--primary-d);
-    background: oklch(0.7414 0.0738 84.595 / 0.08);
+    color: var(--primary-d);
+    border-color: var(--primary);
+    background: oklch(0.7414 0.0738 84.595 / 0.12);
+    transform: translateY(-1px);
   }
 }
 

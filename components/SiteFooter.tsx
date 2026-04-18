@@ -3,7 +3,7 @@ import { siteConfig } from "@/lib/site-config";
 const WORK_LINKS = [
   { label: "About", href: "#about" },
   { label: "Featured Work", href: "#work" },
-  { label: "All Pieces", href: "#all" },
+  { label: "All Case Studies", href: "#all" },
   { label: "Skills", href: "#skills" },
   { label: "Contact", href: "#contact" },
 ];

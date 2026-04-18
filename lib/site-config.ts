@@ -6,7 +6,7 @@ export const siteConfig = {
   tagline:
     "Product Manager turning ambiguous problems into clear product decisions through unit economics, GTM strategy, and user research.",
   description:
-    "Product Manager based in Mumbai focused on product strategy, unit economics, and business model design. 12 end-to-end portfolio pieces examining Razorpay, Slice, Jupiter, and CRED — treating each as a business problem first, a product problem second.",
+    "Product Manager based in Mumbai focused on product strategy, unit economics, and business model design. 12 end-to-end case studies examining Razorpay, Slice, Jupiter, and CRED — treating each as a business problem first, a product problem second.",
   url: "https://siddhitaacharekar.com",
   ogImage: "/og-image.png",
   email: "hello@siddhitaacharekar.com",

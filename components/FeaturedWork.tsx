@@ -47,7 +47,7 @@ export function FeaturedWork({ onOpenCase }: Props) {
                 ↗
               </span>
             </div>
-            <p className="wc-type">Portfolio Piece {cs.number}</p>
+            <p className="wc-type">Case Study {cs.number}</p>
             <h3 className="wc-title">{cs.title}</h3>
             <blockquote className="wc-hook">&ldquo;{cs.hook}&rdquo;</blockquote>
             <p className="wc-body">{cs.summary}</p>

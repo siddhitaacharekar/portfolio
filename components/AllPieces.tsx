@@ -19,7 +19,7 @@ export function AllPieces({ onOpenCase }: Props) {
             #
           </div>
           <div className="pl-hcell" role="columnheader">
-            Piece
+            Case study
           </div>
           <div className="pl-hcell" role="columnheader">
             Key Insight
