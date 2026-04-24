@@ -96,10 +96,6 @@ export function Hero({ onOpenCase }: HeroProps) {
             <dt className="hero-stat-lbl">Products analysed</dt>
             <dd className="hero-stat-num">5+</dd>
           </div>
-          <div>
-            <dt className="hero-stat-lbl">Based in</dt>
-            <dd className="hero-stat-num">Mumbai</dd>
-          </div>
         </dl>
       </div>
 
