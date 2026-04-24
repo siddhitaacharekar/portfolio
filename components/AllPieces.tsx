@@ -12,18 +12,10 @@ export function AllPieces({ onOpenCase }: Props) {
       </h2>
       <div className="pieces-list reveal" role="table" aria-label="All case studies">
         <div className="pl-header" role="row">
-          <div className="pl-hcell" role="columnheader">
-            #
-          </div>
-          <div className="pl-hcell" role="columnheader">
-            Case study
-          </div>
-          <div className="pl-hcell" role="columnheader">
-            Key Insight
-          </div>
-          <div className="pl-hcell" role="columnheader">
-            Skills
-          </div>
+          <div className="pl-hcell" role="columnheader">#</div>
+          <div className="pl-hcell" role="columnheader">Case study</div>
+          <div className="pl-hcell" role="columnheader">Key Insight</div>
+          <div className="pl-hcell" role="columnheader">Skills</div>
         </div>
         {caseStudies.map((cs, idx) => (
           <button
@@ -32,7 +24,7 @@ export function AllPieces({ onOpenCase }: Props) {
             className="pl-row"
             onClick={() => onOpenCase(cs.slug)}
             role="row"
-            aria-label={Open case study: ${cs.title}}
+            aria-label={`Open case study: ${cs.title}`}
             data-stagger-child
             style={{ "--i": idx } as React.CSSProperties}
           >
@@ -51,9 +43,7 @@ export function AllPieces({ onOpenCase }: Props) {
             <div className="pl-cell" role="cell">
               <ul className="pl-tags">
                 {cs.skills.map((s) => (
-                  <li key={s} className="pl-tag">
-                    {s}
-                  </li>
+                  <li key={s} className="pl-tag">{s}</li>
                 ))}
               </ul>
             </div>
@@ -62,4 +52,4 @@ export function AllPieces({ onOpenCase }: Props) {
       </div>
     </section>
   );
-}.
+}
