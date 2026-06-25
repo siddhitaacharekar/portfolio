@@ -74,7 +74,7 @@ export default async function OpengraphImage() {
               color: "#3a342a",
             }}
           >
-            siddhitaacharekar.com
+            siddhita.site
           </div>
         </div>
 
