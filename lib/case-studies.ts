@@ -301,37 +301,37 @@ export const caseStudies: CaseStudy[] = [
     type: "Competitive Analysis · Case Study 08",
     title: "Slice Teardown (CIRCLES)",
     hook:
-      "BNPL monetisation depends on scale, not margin — volume must absorb default losses to be viable.",
+      "In BNPL the product is a commodity — Slice's only durable moat is owning the segment banks ignore before they wake up.",
     category: "Competitive",
     insight:
-      "BNPL monetisation depends on scale not margin — volume must absorb default losses to be viable",
+      "BNPL products are undifferentiated — the real moat is segment ownership and switching cost, not features",
     summary:
-      "Applied the CIRCLES framework to Slice's BNPL positioning and surfaced the volume-vs-default tension hidden in the business model.",
+      "Applied the CIRCLES framework to Slice's competitive position in Indian BNPL, arguing its edge is distribution to an under-served segment, not the product itself.",
     skills: ["BNPL", "Competitive"],
     tags: [
       "CIRCLES Framework",
       "BNPL",
-      "Competitive Analysis",
-      "Default Risk",
-      "Credit Risk",
-      "Scale Economics",
+      "Competitive Moat",
+      "Segment Ownership",
+      "Switching Costs",
+      "Positioning",
     ],
     sections: [
       {
         label: "Context",
-        text: "Using the CIRCLES framework, I dissected Slice's product positioning in the Indian BNPL market. Slice targets users aged 18–27 who are underserved by traditional credit — offering a virtual credit line with a sleek UX that masks the underlying credit infrastructure.",
+        text: "Using the CIRCLES framework, I assessed Slice's competitive position in Indian BNPL — not its unit economics, but whether it can defend its turf. Slice competes against a crowded field: Lazypay, Simpl, Uni, Kissht, and ultimately the traditional credit card, all chasing the same 18–27 segment that banks underwrite reluctantly.",
       },
       {
         label: "Key Finding",
-        text: "Slice's per-transaction revenue (1.5–2% MDR) is thin. At scale, this works only if default rates stay below 3–4%. But their target demographic — young, first-time credit users — inherently carries higher default risk. The business model requires massive transaction volume to absorb inevitable losses.",
+        text: "The BNPL product is effectively a commodity. A virtual credit line plus a sleek interface is replicable by any well-funded player — and the banks themselves can copy it once the segment looks profitable. Slice's genuine advantage isn't the product; it's being early to a segment incumbents ignored, plus brand trust among Gen Z and acquisition reach. None of those are permanent. The moment banks or a deeper-pocketed rival target the same thin-file users, feature parity arrives fast.",
       },
       {
         label: "The Core Insight",
-        text: "BNPL monetisation is a volume game, not a margin game. Slice cannot price for risk the way a bank would — higher fees would kill adoption. So they must grow fast enough that healthy users subsidise defaulters. This creates a dangerous dependency on growth rate as a survival metric.",
+        text: "In a commoditised product category, competitive advantage comes from segment ownership and switching costs, not feature count. Slice's window is the gap before incumbents move. If it can convert early access into lock-in — a credit history users don't want to abandon, primary-card behaviour, ecosystem hooks — it becomes hard to displace. If it competes on features alone, it loses to whoever has the lower cost of capital, which is always the bank.",
       },
       {
         label: "As Product Manager, I Would",
-        text: "Build risk-based credit limits that tighten automatically when a user shows early stress signals. Create a graduated trust system — new users start with low limits and earn higher ones through consistent repayment. This reduces default exposure without killing the frictionless onboarding experience.",
+        text: "Build switching costs deliberately: graduated limits that reward tenure, a credit-building narrative (we report to the bureaus — build your score with us) that makes leaving feel like losing progress, and rewards tied to continued use. Differentiate on trust with an under-served segment, not on UI polish a competitor can clone in a quarter.",
       },
     ],
   },
