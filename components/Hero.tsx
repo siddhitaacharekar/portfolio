@@ -16,7 +16,7 @@ const MINI_STATS = [
   },
   {
     num: "4",
-    label: "Products studied",
+    label: "Fintech deep-dives",
     sub: "Razorpay · Slice · Jupiter · CRED",
   },
   { num: "3", label: "Top case studies", sub: "Strategy · Data · GTM" },
@@ -94,7 +94,7 @@ export function Hero({ onOpenCase }: HeroProps) {
           </div>
           <div>
             <dt className="hero-stat-lbl">Products analysed</dt>
-            <dd className="hero-stat-num">5+</dd>
+            <dd className="hero-stat-num">6</dd>
           </div>
         </dl>
       </div>
