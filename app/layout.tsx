@@ -3,7 +3,6 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
 import { siteConfig } from "@/lib/site-config";
-import { ScrollProgress } from "@/components/ScrollProgress";
 import "./globals.css";
 
 const inter = Inter({
@@ -22,8 +21,8 @@ const jetbrains = JetBrains_Mono({
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#fbfcfd" },
-    { media: "(prefers-color-scheme: dark)", color: "#070a10" },
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#09090b" },
   ],
   width: "device-width",
   initialScale: 1,
@@ -87,7 +86,7 @@ export const metadata: Metadata = {
   manifest: "/manifest.webmanifest",
 };
 
-const themeScript = `(function(){try{var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','light');}})();`;
+const themeScript = `(function(){try{var t=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','light');}})();`;
 
 export default function RootLayout({
   children,
@@ -143,7 +142,6 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <ScrollProgress />
         {children}
         <Analytics />
         <SpeedInsights />
