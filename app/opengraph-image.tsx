@@ -136,10 +136,10 @@ export default async function OpengraphImage() {
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
               <div style={{ fontSize: "56px", color: "#1c1a16", fontStyle: "italic" }}>
-                4
+                6
               </div>
               <div style={{ fontSize: "16px", color: "#8a7b55", letterSpacing: "0.08em", textTransform: "uppercase" }}>
-                Products studied
+                Products analysed
               </div>
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
