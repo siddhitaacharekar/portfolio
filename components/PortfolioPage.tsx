@@ -110,7 +110,7 @@ export function PortfolioPage() {
       ? '<span class="m-flag">Interactive analysis</span>'
       : '<span class="m-flag">Case study</span>';
     let html =
-      `<div class="m-head"><div class="m-crumb">Case ${s.no} <span style="opacity:.5">/</span> ${s.cat}</div><button class="m-x" id="mx" aria-label="Close">\u2715</button></div>` +
+      `<div class="m-head"><div class="m-crumb">Case ${s.no} <span style="opacity:.5">/</span> ${s.cat}</div><button class="m-x" id="mx" aria-label="Close">✕</button></div>` +
       `<div class="m-body">${flag}<div class="m-title">${s.title}</div><div class="m-hook">${s.hook}</div>`;
     if (s.model && MODEL_HTML[s.model]) html += MODEL_HTML[s.model];
     s.sections.forEach(([k, v]) => {
@@ -160,15 +160,15 @@ export function PortfolioPage() {
         <section id="top">
           <div className="hero-row">
             <div className="hero-text">
-              <h1 className="bf" style={{ transitionDelay: ".05s" }}>Hi, I\u2019m Siddhita <span className="wave">\ud83d\udc4b</span></h1>
-              <p className="tagline bf" style={{ transitionDelay: ".15s" }}>I\u2019m a product intern in fintech lending. I like turning messy, manual decisions into systems that can run on their own \u2014 and I\u2019m looking for my next role as an Associate Product Manager.</p>
+              <h1 className="bf" style={{ transitionDelay: ".05s" }}>Hi, I’m Siddhita <span className="wave">👋</span></h1>
+              <p className="tagline bf" style={{ transitionDelay: ".15s" }}>I’m a product intern in fintech lending. I like turning messy, manual decisions into systems that can run on their own — and I’m looking for my next role as an Associate Product Manager.</p>
             </div>
           </div>
         </section>
 
         <section>
           <h2 className="sec-h bf">About</h2>
-          <p className="about-text bf">I\u2019m a <b>Product Intern at Flexi Loans</b> and an aspiring Associate Product Manager. I work where product meets credit risk: at Flexi, I built automated credit-decisioning policies inside <b>Jarvis</b>, our in-house lending platform, turning manual, case-by-case approvals into reusable policy buckets the system can decide against on its own. I like understanding the business behind a product, and I stay close enough to the data \u2014 SQL, APIs, funnels \u2014 to know what\u2019s actually buildable.</p>
+          <p className="about-text bf">I’m a <b>Product Intern at Flexi Loans</b> and an aspiring Associate Product Manager. I work where product meets credit risk: at Flexi, I built automated credit-decisioning policies inside <b>Jarvis</b>, our in-house lending platform, turning manual, case-by-case approvals into reusable policy buckets the system can decide against on its own. I like understanding the business behind a product, and I stay close enough to the data — SQL, APIs, funnels — to know what’s actually buildable.</p>
         </section>
 
         <section>
@@ -177,11 +177,11 @@ export function PortfolioPage() {
             <div className="rc bf">
               <div className="rc-av">FL</div>
               <div className="rc-main">
-                <div className="rc-top"><span className="rc-co">Flexi Loans</span><span className="rc-date">Oct 2025 \u2013 Present</span></div>
-                <div className="rc-role">Product Intern \u00b7 Mumbai</div>
+                <div className="rc-top"><span className="rc-co">Flexi Loans</span><span className="rc-date">Oct 2025 – Present</span></div>
+                <div className="rc-role">Product Intern · Mumbai</div>
                 <ul className="rc-bullets">
                   <li>Built automated decisioning policies in <b>Jarvis</b> (in-house lending platform), automating <b>~40%</b> of credit decisions and cutting decision time from hours to near-instant.</li>
-                  <li>Consolidated scattered loan policies into reusable <b>buckets</b> so the system auto-approves or rejects against the right rules \u2014 routing genuinely ambiguous cases to a human.</li>
+                  <li>Consolidated scattered loan policies into reusable <b>buckets</b> so the system auto-approves or rejects against the right rules — routing genuinely ambiguous cases to a human.</li>
                   <li>Onboarded a partner channel that now drives <b>~70%</b> of business-loan disbursements.</li>
                   <li>Reworked the Loan Origination System (LOS) workflow, improving turnaround by <b>~25%</b>.</li>
                   <li>Defined partner-health and disbursement KPIs; ran onboarding funnel analysis.</li>
@@ -197,8 +197,8 @@ export function PortfolioPage() {
             <div className="rc bf">
               <div className="rc-av">MV</div>
               <div className="rc-main">
-                <div className="rc-top"><span className="rc-co">MVLU College</span><span className="rc-date">2022 \u2013 2025</span></div>
-                <div className="rc-role">B.Sc. Information Technology \u00b7 9.28 CGPA</div>
+                <div className="rc-top"><span className="rc-co">MVLU College</span><span className="rc-date">2022 – 2025</span></div>
+                <div className="rc-role">B.Sc. Information Technology · 9.28 CGPA</div>
               </div>
             </div>
           </div>
@@ -213,16 +213,16 @@ export function PortfolioPage() {
           <div className="center-head bf">
             <span className="pill">My Work</span>
             <h2 className="big">Selected case studies</h2>
-            <p className="sub">Shipped product work and deep teardowns of fintech businesses \u2014 each one a study in the economics beneath the product. Tap any card for the full breakdown.</p>
+            <p className="sub">Shipped product work and deep teardowns of fintech businesses — each one a study in the economics beneath the product. Tap any card for the full breakdown.</p>
           </div>
           <div className="proj-grid bf">
             {STUDIES.map((s) => (
               <button className="proj-card" key={s.no} onClick={() => openStudy(s.no)}>
-                <div className="pc-cat">{s.cat} \u00b7 Case {s.no}</div>
+                <div className="pc-cat">{s.cat} · Case {s.no}</div>
                 <div className="pc-title">{s.title}</div>
                 <div className="pc-desc">{s.hook}</div>
                 <div className="pc-badges">{s.tags.map((t) => (<span key={t}>{t}</span>))}</div>
-                <div className="pc-foot"><span className="pc-link">View case study <span className="ar">\u2192</span></span>{s.shipped ? (<span className="pc-flag ship">Shipped</span>) : s.model ? (<span className="pc-flag">Interactive</span>) : null}</div>
+                <div className="pc-foot"><span className="pc-link">View case study <span className="ar">→</span></span>{s.shipped ? (<span className="pc-flag ship">Shipped</span>) : s.model ? (<span className="pc-flag">Interactive</span>) : null}</div>
               </button>
             ))}
           </div>
@@ -232,7 +232,7 @@ export function PortfolioPage() {
           <div className="center-head bf">
             <span className="pill">Certifications</span>
             <h2 className="big">Always learning</h2>
-            <p className="sub">Structured learning that backs up the work \u2014 product, data, and AI.</p>
+            <p className="sub">Structured learning that backs up the work — product, data, and AI.</p>
           </div>
           <div className="timeline bf">
             <div className="tl-item"><div className="tl-dot">P</div><div className="tl-body"><div className="tl-issuer">Pendo</div><h3>AI for Product Management</h3></div></div>
@@ -245,7 +245,7 @@ export function PortfolioPage() {
           <div className="center-head bf" style={{ marginBottom: "24px" }}>
             <span className="pill">Contact</span>
             <h2 className="big">Get in touch</h2>
-            <p className="sub">Want to talk product, or have a role in mind? I\u2019d love to hear from you.</p>
+            <p className="sub">Want to talk product, or have a role in mind? I’d love to hear from you.</p>
           </div>
           <div className="contact-actions bf">
             <a className="cbtn primary" href={siteConfig.social.gmail} target="_blank" rel="noopener noreferrer">{I.mail} Email me</a>
@@ -255,7 +255,7 @@ export function PortfolioPage() {
           <p className="contact-mail bf">{siteConfig.email}</p>
         </section>
 
-        <footer className="bf">Siddhita Acharekar \u00b7 Built in Mumbai</footer>
+        <footer className="bf">Siddhita Acharekar · Built in Mumbai</footer>
       </main>
 
       <nav className="dock" aria-label="Quick links">
