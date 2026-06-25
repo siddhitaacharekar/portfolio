@@ -8,6 +8,7 @@ export type CaseStudySection = {
 export type CaseStudy = {
   slug: string;
   number: string;
+  type: string;
   title: string;
   hook: string;
   category: string;
@@ -17,6 +18,9 @@ export type CaseStudy = {
   shipped?: boolean;
   model?: ModelKind;
   featStat?: [string, string];
+  featured?: boolean;
+  pinned?: boolean;
+  skills: string[];
   tags: string[];
   sections: CaseStudySection[];
 };
@@ -25,6 +29,9 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "flexi_decisioning",
     number: "01",
+    type: "Automation \u00b7 Case Study 01",
+    skills: ["Automation", "Policy Design"],
+    featured: true,
     title: "Automated Credit Decisioning — Flexi Loans",
     category: "Automation",
     shipped: true,
@@ -45,6 +52,9 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "slice_unit_economics",
     number: "02",
+    type: "Unit Economics · Case Study 02",
+    skills: ["LTV:CAC", "Default Risk"],
+    featured: true,
     title: "Slice Unit Economics Teardown",
     category: "Unit Economics",
     risk: true,
@@ -65,6 +75,9 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "razorpay_unit_economics",
     number: "03",
+    type: "Unit Economics · Case Study 03",
+    skills: ["MDR", "Concentration"],
+    featured: true,
     title: "Razorpay Unit Economics",
     category: "Unit Economics",
     risk: true,
@@ -85,6 +98,9 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "jupiter_teardown",
     number: "04",
+    type: "Product Strategy · Case Study 04",
+    skills: ["CIRCLES", "Neo-banking"],
+    featured: true,
     title: "Jupiter Neo-bank Teardown (CIRCLES)",
     category: "Product Strategy",
     model: "jupiter",
@@ -104,6 +120,9 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "slice_circles",
     number: "05",
+    type: "Competitive · Case Study 05",
+    skills: ["CIRCLES", "Competitive Moat"],
+    featured: false,
     title: "Slice Teardown (CIRCLES)",
     category: "Competitive",
     hook: "In BNPL the product is a commodity — Slice's only durable moat is owning the segment banks ignore.",
@@ -121,6 +140,9 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "jupiter_positioning",
     number: "06",
+    type: "GTM · Case Study 06",
+    skills: ["GTM", "Positioning"],
+    featured: false,
     title: "Jupiter Money Report Positioning",
     category: "GTM",
     hook: "Positioning wins when it names the enemy — the real competitor is the raw, unreadable bank statement.",
@@ -138,6 +160,9 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "razorpay_launch",
     number: "07",
+    type: "Launch · Case Study 07",
+    skills: ["Alpha", "Hypothesis Testing"],
+    featured: false,
     title: "Razorpay Merchant Loan Launch",
     category: "Launch",
     hook: "Alpha must test assumptions, not features — first users should break your riskiest hypothesis.",
@@ -155,6 +180,9 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "onboarding_funnel",
     number: "08",
+    type: "Funnel Analysis · Case Study 08",
+    skills: ["Funnel", "Trust Design"],
+    featured: false,
     title: "Fintech Onboarding Funnel Analysis",
     category: "Funnel Analysis",
     hook: "Fintech onboarding looks like a UX problem — but it's actually a trust problem.",
@@ -174,3 +202,5 @@ export const caseStudies: CaseStudy[] = [
 export function getCaseStudy(slug: string): CaseStudy | undefined {
   return caseStudies.find((c) => c.slug === slug);
 }
+
+export const featuredCaseStudies = caseStudies.filter((c) => c.featured);
