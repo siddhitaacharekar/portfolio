@@ -22,25 +22,25 @@ const STUDIES: Study[] = [
 const $ = (id: string): any => document.getElementById(id);
 const MODEL_HTML: Record<string,string> = {
  flexi:`<div class="model"><div class="model-top"><div class="model-title">Policy-bucket decisioning — how it works</div><span class="model-badge">interactive</span></div><div class="model-sub">Pick an application — watch it route to a bucket, clear its policy checks, and get an instant decision</div><div class="bk-apps" id="bk_apps"></div><div class="bk-flow"><div class="bk-stage"><div class="bk-stage-k">Application</div><div class="bk-app" id="bk_app">—</div></div><div class="bk-arrow">→</div><div class="bk-stage"><div class="bk-stage-k">Routed to bucket</div><div class="bk-bucket" id="bk_bucket">—</div></div></div><div class="bk-checks" id="bk_checks"></div><div class="bk-decision" id="bk_decision"></div><div class="ass-note" style="margin-top:14px">illustrative of the decision flow — policy values are examples, not Flexi’s actual thresholds</div></div>`,
- slice:`<div class="model"><div class="model-top"><div class="model-title">Slice unit economics — live model</div><span class="model-badge">interactive</span></div><div class="model-sub">Net contribution per 100 users / year</div>
+ slice:`<div class="model"><div class="model-top"><div class="model-title">Slice unit economics — live model</div><span class="model-badge">interactive</span></div><div class="model-sub">Each user nets ~₹875 in MDR, but one default costs ~₹17,500. Drag the default rate — past ~5%, losses overtake MDR and Slice turns unprofitable.</div>
    <div class="readout-v pos" id="m_net">+₹87,500</div><div class="verdict pos" id="m_verdict">Profitable — MDR covers losses</div>
    <div class="chart-wrap"><svg class="chart" id="m_chart" viewBox="0 0 320 140" preserveAspectRatio="none"></svg></div>
    <div class="sld-head"><span>Default rate</span><b id="m_lbl">2.0%</b></div>
-   <input type="range" id="m_dr" min="0" max="10" step="0.1" value="2" style="background:linear-gradient(90deg,#cfc8bb 0,#cfc8bb 50%,#cf4a3c 50%,#cf4a3c 100%)"/>
+   <input type="range" id="m_dr" min="0" max="10" step="0.1" value="2" style="background:linear-gradient(90deg,var(--chart-pos) 0,var(--chart-pos) 50%,var(--chart-risk) 50%,var(--chart-risk) 100%)"/>
    <div class="ticks"><span>0%</span><span>break-even 5%</span><span>10%</span></div>
    <div class="assump"><div class="ass"><div class="ass-k">Spend/user</div><div class="ass-v">₹50,000</div></div><div class="ass"><div class="ass-k">MDR</div><div class="ass-v">1.75%</div></div><div class="ass"><div class="ass-k">MDR rev/user</div><div class="ass-v">₹875</div></div><div class="ass"><div class="ass-k">Loss/default</div><div class="ass-v">₹17,500</div></div><div class="ass-note">modeled estimates — drag to test sensitivity</div></div></div>`,
  razorpay:`<div class="model"><div class="model-top"><div class="model-title">Razorpay concentration — live model</div><span class="model-badge">interactive</span></div><div class="model-sub">Gateway revenue at risk if top merchants churn</div>
    <div class="readout-v pos" id="r_out">0%</div><div class="verdict pos" id="r_verdict">Resilient — minimal exposure</div>
    <div class="chart-wrap"><svg class="chart" id="r_bar" viewBox="0 0 320 54" preserveAspectRatio="none"></svg></div>
    <div class="sld-head"><span>Top merchants lost</span><b id="r_lbl">0</b></div>
-   <input type="range" id="r_n" min="0" max="10" step="1" value="0" style="background:linear-gradient(90deg,#cfc8bb 0,#cf4a3c 100%)"/>
+   <input type="range" id="r_n" min="0" max="10" step="1" value="0" style="background:linear-gradient(90deg,var(--chart-pos) 0,var(--chart-risk) 100%)"/>
    <div class="ticks"><span>0</span><span>5</span><span>10</span></div>
    <div class="assump"><div class="ass"><div class="ass-k">Top-10 share of TPV</div><div class="ass-v">~38%</div></div><div class="ass"><div class="ass-k">Avg / top merchant</div><div class="ass-v">~3.8%</div></div><div class="ass-note">modeled estimate — concentration = fragility</div></div></div>`,
  jupiter:`<div class="model"><div class="model-top"><div class="model-title">Jupiter share-of-wallet — live model</div><span class="model-badge">interactive</span></div><div class="model-sub">Revenue per user scales with primary-relationship share</div>
    <div class="readout-v neg" id="j_out">₹360</div><div class="verdict neg" id="j_verdict">Secondary-app trap — low monetization</div>
    <div class="chart-wrap"><svg class="chart" id="j_bar" viewBox="0 0 320 54" preserveAspectRatio="none"></svg></div>
    <div class="sld-head"><span>Share of wallet</span><b id="j_lbl">15%</b></div>
-   <input type="range" id="j_sow" min="5" max="100" step="1" value="15" style="background:linear-gradient(90deg,#cf4a3c 0,#cfc8bb 100%)"/>
+   <input type="range" id="j_sow" min="5" max="100" step="1" value="15" style="background:linear-gradient(90deg,var(--chart-risk) 0,var(--chart-pos) 100%)"/>
    <div class="ticks"><span>5%</span><span>primary at 60%</span><span>100%</span></div>
    <div class="assump"><div class="ass"><div class="ass-k">Full-relationship ARPU</div><div class="ass-v">₹2,400/yr</div></div><div class="ass"><div class="ass-k">Today (secondary)</div><div class="ass-v">~15%</div></div><div class="ass-note">modeled estimate — SoW, not DAU, drives revenue</div></div></div>`
 };
@@ -69,25 +69,25 @@ const INIT: Record<string, ()=>void> = {
  slice(){const dr=$('m_dr'),lbl=$('m_lbl'),net=$('m_net'),vd=$('m_verdict'),ch=$('m_chart');
    const REV=87500,LOSS=17500,U=100,W=320,H=140,P=6;const at=d=>REV-(U*(d/100))*LOSS;const N0=at(0),N10=at(10);
    const yF=v=>{const t=(v-N10)/(N0-N10);return H-P-t*(H-2*P);};const xF=d=>P+(d/10)*(W-2*P);const z=yF(0),be=xF(5);
-   ch.innerHTML=`<defs><linearGradient id="gp" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfc8bb" stop-opacity=".35"/><stop offset="1" stop-color="#cfc8bb" stop-opacity="0"/></linearGradient><linearGradient id="gn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cf4a3c" stop-opacity="0"/><stop offset="1" stop-color="#cf4a3c" stop-opacity=".35"/></linearGradient></defs>
+   ch.innerHTML=`<defs><linearGradient id="gp" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d4d4d8" stop-opacity=".35"/><stop offset="1" stop-color="#d4d4d8" stop-opacity="0"/></linearGradient><linearGradient id="gn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f1796b" stop-opacity="0"/><stop offset="1" stop-color="#f1796b" stop-opacity=".35"/></linearGradient></defs>
      <path d="M${xF(0)},${z} L${xF(0)},${yF(N0)} L${be},${z} Z" fill="url(#gp)"/><path d="M${be},${z} L${xF(10)},${yF(N10)} L${xF(10)},${z} Z" fill="url(#gn)"/>
-     <line x1="${P}" y1="${z}" x2="${W-P}" y2="${z}" stroke="rgba(245,241,234,.18)" stroke-dasharray="2 3"/><line x1="${be}" y1="${P}" x2="${be}" y2="${H-P}" stroke="rgba(245,241,234,.22)" stroke-dasharray="3 3"/><text class="be-lbl" x="${be+5}" y="${P+11}">5%</text>
-     <line x1="${xF(0)}" y1="${yF(N0)}" x2="${xF(10)}" y2="${yF(N10)}" stroke="#fff" stroke-width="2" stroke-linecap="round"/><circle id="m_mk" r="5" fill="#fff" stroke="#1f1c19" stroke-width="2"/>`;
-   const up=()=>{const d=+dr.value,v=at(d);lbl.textContent=d.toFixed(1)+'%';net.textContent=fmt(v);const p=v>=0;net.className='readout-v '+(p?'pos':'neg');vd.className='verdict '+(p?'pos':'neg');vd.textContent=Math.abs(v)<1500?'Break-even — MDR exactly covers losses':p?'Profitable — MDR covers losses':'Loss-making — defaults exceed MDR';const m=$('m_mk');m.setAttribute('cx',xF(d));m.setAttribute('cy',yF(v));m.setAttribute('fill',p?'#cfc8bb':'#cf4a3c');};
+     <line x1="${P}" y1="${z}" x2="${W-P}" y2="${z}" stroke="rgba(250,250,250,.18)" stroke-dasharray="2 3"/><line x1="${be}" y1="${P}" x2="${be}" y2="${H-P}" stroke="rgba(250,250,250,.22)" stroke-dasharray="3 3"/><text class="be-lbl" x="${be+5}" y="${P+11}">5%</text>
+     <line x1="${xF(0)}" y1="${yF(N0)}" x2="${xF(10)}" y2="${yF(N10)}" stroke="#fff" stroke-width="2" stroke-linecap="round"/><circle id="m_mk" r="5" fill="#fff" stroke="#161619" stroke-width="2"/>`;
+   const up=()=>{const d=+dr.value,v=at(d);lbl.textContent=d.toFixed(1)+'%';net.textContent=fmt(v);const p=v>=0;net.className='readout-v '+(p?'pos':'neg');vd.className='verdict '+(p?'pos':'neg');vd.textContent=Math.abs(v)<1500?'Break-even — MDR exactly covers losses':p?'Profitable — MDR covers losses':'Loss-making — defaults exceed MDR';const m=$('m_mk');m.setAttribute('cx',xF(d));m.setAttribute('cy',yF(v));m.setAttribute('fill',p?'#d4d4d8':'#f1796b');};
    dr.oninput=up;up();},
  razorpay(){const n=$('r_n'),lbl=$('r_lbl'),out=$('r_out'),vd=$('r_verdict'),bar=$('r_bar');
    const W=320,H=54,per=3.8;
    const up=()=>{const lost=+n.value,risk=Math.min(lost*per,38);lbl.textContent=lost;out.textContent=risk.toFixed(1)+'%';
      const bad=risk>=10,warn=risk>=5;out.className='readout-v '+(bad?'neg':'pos');vd.className='verdict '+(bad?'neg':'pos');
      vd.textContent=bad?'Structural exposure — >10% revenue at risk':warn?'Watch — material single-quarter exposure':'Resilient — minimal exposure';
-     const rw=(risk/100)*W;bar.innerHTML=`<rect x="0" y="14" width="${W}" height="26" rx="6" fill="#38332c"/><rect x="0" y="14" width="${W-rw}" height="26" rx="6" fill="#cfc8bb" opacity=".55"/><rect x="${W-rw}" y="14" width="${rw}" height="26" fill="#cf4a3c"/><text x="6" y="9" class="be-lbl" fill="#a39c92">safe revenue</text><text x="${W-6}" y="9" class="be-lbl" fill="#e0685c" text-anchor="end">at risk</text>`;};
+     const rw=(risk/100)*W;bar.innerHTML=`<rect x="0" y="14" width="${W}" height="26" rx="6" fill="#2a2a2e"/><rect x="0" y="14" width="${W-rw}" height="26" rx="6" fill="#d4d4d8" opacity=".55"/><rect x="${W-rw}" y="14" width="${rw}" height="26" fill="#f1796b"/><text x="6" y="9" class="be-lbl" fill="#a1a1aa">safe revenue</text><text x="${W-6}" y="9" class="be-lbl" fill="#f87171" text-anchor="end">at risk</text>`;};
    n.oninput=up;up();},
  jupiter(){const s=$('j_sow'),lbl=$('j_lbl'),out=$('j_out'),vd=$('j_verdict'),bar=$('j_bar');
    const W=320,ARPU=2400;
    const up=()=>{const sow=+s.value,rev=Math.round(ARPU*(sow/100));lbl.textContent=sow+'%';out.textContent='₹'+rev.toLocaleString('en-IN');
      const primary=sow>=60,ok=sow>=30;out.className='readout-v '+(ok?'pos':'neg');vd.className='verdict '+(ok?'pos':'neg');
      vd.textContent=primary?'Primary relationship — full monetization':ok?'Transitioning — rising share of wallet':'Secondary-app trap — low monetization';
-     const jw=(sow/100)*W;bar.innerHTML=`<rect x="0" y="14" width="${W}" height="26" rx="6" fill="#38332c"/><rect x="0" y="14" width="${jw}" height="26" rx="6" fill="#cfc8bb" opacity=".7"/><text x="6" y="9" class="be-lbl" fill="#ece7dd">Jupiter</text><text x="${W-6}" y="9" class="be-lbl" fill="#a39c92" text-anchor="end">other banks</text>`;};
+     const jw=(sow/100)*W;bar.innerHTML=`<rect x="0" y="14" width="${W}" height="26" rx="6" fill="#2a2a2e"/><rect x="0" y="14" width="${jw}" height="26" rx="6" fill="#d4d4d8" opacity=".7"/><text x="6" y="9" class="be-lbl" fill="#e4e4e7">Jupiter</text><text x="${W-6}" y="9" class="be-lbl" fill="#a1a1aa" text-anchor="end">other banks</text>`;};
    s.oninput=up;up();}
 };
 
@@ -141,9 +141,21 @@ export function PortfolioPage() {
     const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") closeModal(); };
     const ov = overlayRef.current;
     const onOv = (e: MouseEvent) => { if (e.target === ov) closeModal(); };
+    const onAnchor = (e) => {
+      const a = e.target.closest('a[href^="#"]');
+      if (!a) return;
+      const id = a.getAttribute("href").slice(1);
+      if (!id) return;
+      const t = document.getElementById(id);
+      if (!t) return;
+      e.preventDefault();
+      t.scrollIntoView({ behavior: "smooth", block: "start" });
+      history.pushState(null, "", "#" + id);
+    };
     document.addEventListener("keydown", onKey);
+    document.addEventListener("click", onAnchor);
     ov?.addEventListener("click", onOv);
-    return () => { io.disconnect(); document.removeEventListener("keydown", onKey); ov?.removeEventListener("click", onOv); };
+    return () => { io.disconnect(); document.removeEventListener("keydown", onKey); document.removeEventListener("click", onAnchor); ov?.removeEventListener("click", onOv); };
   }, []);
 
   const I = {
@@ -229,30 +241,36 @@ export function PortfolioPage() {
         </section>
 
         <section>
-          <div className="center-head bf">
-            <span className="pill">Certifications</span>
-            <h2 className="big">Always learning</h2>
-            <p className="sub">Structured learning that backs up the work — product, data, and AI.</p>
+          <div className="dual-grid bf">
+            <div className="info-card" id="certs">
+              <div className="info-head">
+                <span className="pill">Certifications</span>
+                <h3 className="dual-title">Always learning</h3>
+                <p className="dual-sub">Structured learning that backs up the work — product, data, and AI.</p>
+              </div>
+              <div className="info-body">
+                <div className="timeline">
+                  <div className="tl-item"><div className="tl-dot">P</div><div className="tl-body"><div className="tl-issuer">Pendo</div><h3>AI for Product Management</h3></div></div>
+                  <div className="tl-item"><div className="tl-dot">D</div><div className="tl-body"><div className="tl-issuer">Deloitte</div><h3>Data Analytics</h3></div></div>
+                  <div className="tl-item"><div className="tl-dot">G</div><div className="tl-body"><div className="tl-issuer">Great Learning</div><h3>Prompt Engineering</h3></div></div>
+                </div>
+              </div>
+            </div>
+            <div className="info-card" id="contact">
+              <div className="info-head">
+                <span className="pill">Contact</span>
+                <h3 className="dual-title">Get in touch</h3>
+                <p className="dual-sub">Want to talk product, or have a role in mind? I’d love to hear from you.</p>
+              </div>
+              <div className="info-body">
+                <div className="contact-actions">
+                  <a className="cbtn primary" href={siteConfig.social.gmail} target="_blank" rel="noopener noreferrer">{I.mail} Email me</a>
+                  <a className="cbtn" href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer">{I.li} LinkedIn</a>
+                  <a className="cbtn" href={siteConfig.social.twitter} target="_blank" rel="noopener noreferrer">{I.x} Twitter</a>
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="timeline bf">
-            <div className="tl-item"><div className="tl-dot">P</div><div className="tl-body"><div className="tl-issuer">Pendo</div><h3>AI for Product Management</h3></div></div>
-            <div className="tl-item"><div className="tl-dot">D</div><div className="tl-body"><div className="tl-issuer">Deloitte</div><h3>Data Analytics</h3></div></div>
-            <div className="tl-item"><div className="tl-dot">G</div><div className="tl-body"><div className="tl-issuer">Great Learning</div><h3>Prompt Engineering</h3></div></div>
-          </div>
-        </section>
-
-        <section id="contact">
-          <div className="center-head bf" style={{ marginBottom: "24px" }}>
-            <span className="pill">Contact</span>
-            <h2 className="big">Get in touch</h2>
-            <p className="sub">Want to talk product, or have a role in mind? I’d love to hear from you.</p>
-          </div>
-          <div className="contact-actions bf">
-            <a className="cbtn primary" href={siteConfig.social.gmail} target="_blank" rel="noopener noreferrer">{I.mail} Email me</a>
-            <a className="cbtn" href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer">{I.li} LinkedIn</a>
-            <a className="cbtn" href={siteConfig.social.twitter} target="_blank" rel="noopener noreferrer">{I.x} Twitter</a>
-          </div>
-          <p className="contact-mail bf">{siteConfig.email}</p>
         </section>
 
         <footer className="bf">Siddhita Acharekar · Built in Mumbai</footer>
