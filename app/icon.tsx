@@ -11,18 +11,19 @@ export default function Icon() {
         style={{
           width: "100%",
           height: "100%",
-          background: "#1c1a16",
-          color: "#d4b47a",
+          background: "#10b981",
+          color: "#04241a",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          fontSize: 22,
-          fontFamily: "Georgia, serif",
-          fontStyle: "italic",
-          borderRadius: 6,
+          fontSize: 15,
+          fontWeight: 700,
+          letterSpacing: -0.5,
+          fontFamily: "Arial, Helvetica, sans-serif",
+          borderRadius: 7,
         }}
       >
-        S
+        SA
       </div>
     ),
     { ...size }
