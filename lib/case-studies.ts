@@ -398,7 +398,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         label: "Key Finding",
-        text: "Razorpay's revenue is heavily concentrated in a small number of large merchants. If the top 10 merchants churned — or negotiated lower rates — revenue would drop disproportionately. Meanwhile, SMB merchants generate volume but at razor-thin margins, often below the cost-to-serve.",
+        text: "Payment gateways follow a power-law: a handful of large enterprise merchants drive a disproportionate share of TPV, while a long tail of SMBs adds volume at razor-thin margins. Assuming an industry-typical distribution where the top ~10 merchants account for roughly 35–40% of TPV (a modeled estimate, not reported data), the model is structurally exposed — if just 2–3 top merchants churned or renegotiated their MDR down by 20–30 bps, Razorpay could lose well over 10% of gateway revenue in a single quarter. The asymmetry is the point: losing one enterprise merchant equals losing thousands of SMBs in volume terms. Worse, those same top merchants hold the most negotiating leverage, so concentration risk and margin-compression risk sit in the same accounts. Meanwhile SMB merchants often fall below cost-to-serve.",
       },
       {
         label: "The Core Insight",
@@ -433,7 +433,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         label: "Key Finding",
-        text: "LTV:CAC of 1.3:1 means Slice needs 2–3 years to break even per user (CAC approximately ₹500–800, Year 1 LTV approximately ₹900). A healthy business needs 3:1 or higher. Default rates above 4–5% wipe out all MDR revenue. Their cost of funds persists even when users default. RBI regulatory risk on BNPL is a second existential threat.",
+        text: "Unit economics are fragile: LTV:CAC is ~1.3:1 (CAC ₹500–800, Year-1 LTV ~₹900) versus the 3:1 a healthy business needs — so break-even takes 2–3 years per user. The deeper problem is the default math. Assuming ~₹50,000 annual spend per user at a 1.75% MDR (modeled estimates), Slice earns roughly ₹875 per user per year. But a defaulting user loses the outstanding principal — assume ~₹17,500 at near-total loss given default for unsecured, bank-rejected borrowers. Break-even default rate ≈ ₹875 ÷ ₹17,500 ≈ 5%. In plain terms: every single default erases the MDR earned from ~20 paying users. That is why a 4–5% default rate wipes out all MDR revenue — and the cost of funds persists even when users do not pay. RBI's tightening stance on BNPL is a second existential threat.",
       },
       {
         label: "The Core Insight",
