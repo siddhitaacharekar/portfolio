@@ -11,8 +11,8 @@ export default function Icon() {
         style={{
           width: "100%",
           height: "100%",
-          background: "#10b981",
-          color: "#04241a",
+          background: "#09090b",
+          color: "#fafafa",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -20,7 +20,7 @@ export default function Icon() {
           fontWeight: 700,
           letterSpacing: -0.5,
           fontFamily: "Arial, Helvetica, sans-serif",
-          borderRadius: 7,
+          borderRadius: "50%",
         }}
       >
         SA
