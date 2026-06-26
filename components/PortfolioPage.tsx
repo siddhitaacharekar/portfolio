@@ -242,20 +242,6 @@ export function PortfolioPage() {
 
         <section>
           <div className="dual-grid bf">
-            <div className="info-card" id="certs">
-              <div className="info-head">
-                <span className="pill">Certifications</span>
-                <h3 className="dual-title">Always learning</h3>
-                <p className="dual-sub">Structured learning that backs up the work — product, data, and AI.</p>
-              </div>
-              <div className="info-body">
-                <div className="timeline">
-                  <div className="tl-item"><div className="tl-dot">P</div><div className="tl-body"><div className="tl-issuer">Pendo</div><h3>AI for Product Management</h3></div></div>
-                  <div className="tl-item"><div className="tl-dot">D</div><div className="tl-body"><div className="tl-issuer">Deloitte</div><h3>Data Analytics</h3></div></div>
-                  <div className="tl-item"><div className="tl-dot">G</div><div className="tl-body"><div className="tl-issuer">Great Learning</div><h3>Prompt Engineering</h3></div></div>
-                </div>
-              </div>
-            </div>
             <div className="info-card" id="contact">
               <div className="info-head">
                 <span className="pill">Contact</span>
