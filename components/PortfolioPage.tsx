@@ -3,6 +3,7 @@
 "use client";
 import { useEffect, useRef } from "react";
 import { siteConfig } from "@/lib/site-config";
+import AnimatedGreeting from "@/components/AnimatedGreeting";
 
 type Study = { no: string; cat: string; title: string; hook: string; sections: string[][]; tags: string[]; shipped?: number; model?: string };
 
@@ -172,8 +173,7 @@ export function PortfolioPage() {
         <section id="top">
           <div className="hero-row">
             <div className="hero-text">
-              <h1 className="bf" style={{ transitionDelay: ".05s" }}>Hi, I’m Siddhita <span className="wave">👋</span></h1>
-              <p className="tagline bf" style={{ transitionDelay: ".15s" }}>I’m a product intern in fintech lending. I like turning messy, manual decisions into systems that can run on their own — and I’m looking for my next role as an Associate Product Manager.</p>
+              <h1 className="bf" aria-label="Hi, I’m Siddhita" style={{ transitionDelay: ".05s" }}><AnimatedGreeting />, I’m Siddhita <span className="wave">👋</span></h1>
             </div>
           </div>
         </section>
