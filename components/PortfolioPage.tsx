@@ -3,7 +3,6 @@
 "use client";
 import { useEffect, useRef } from "react";
 import { siteConfig } from "@/lib/site-config";
-import AnimatedGreeting from "@/components/AnimatedGreeting";
 
 type Study = { no: string; cat: string; title: string; hook: string; sections: string[][]; tags: string[]; shipped?: number; model?: string };
 
