@@ -172,7 +172,7 @@ export function PortfolioPage() {
         <section id="top">
           <div className="hero-row">
             <div className="hero-text">
-              <h1 className="bf" aria-label="Hi, I’m Siddhita" style={{ transitionDelay: ".05s" }}><AnimatedGreeting />, I’m Siddhita <span className="wave">👋</span></h1>
+              <h1 className="bf" style={{ transitionDelay: ".05s" }}>Hi, I’m Siddhita <span className="wave">👋</span></h1>
             </div>
           </div>
         </section>
